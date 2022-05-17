@@ -26,7 +26,7 @@ export default {
 @import '../../assets/style/vars';
 
 .card_container{
-  @include flex-column-cnt();
+  @include flex-column-start-ctn();
   background-color: $secondary-color;
   width: 100%;
   height: calc(100% - 30px);
@@ -42,10 +42,13 @@ export default {
   h5{
     padding: 20px 0;
     text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
   }
 
   span{
     color: grey;
+    font-size: .9rem;
   }
 }
 
