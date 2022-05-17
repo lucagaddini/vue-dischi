@@ -1,28 +1,43 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <HeaderComponent />
+    <MainComponent />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderComponent from "./components/HeaderComponent.vue";
+import MainComponent from "./components/MainComponent.vue";
+
+import axios from 'axios';
+import '../node_modules/bootstrap/scss/bootstrap.scss';
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    components: { HeaderComponent, MainComponent },
+    data(){
+      return{
+        baseURL:'https://flynn.boolean.careers/exercises/api/array/music',
+        albumArray:[],
+        isLoaded : false
+      }
+    },
+    mounted(){
+      this.getAPI()
+    },
+    methods:{
+      getAPI(){
+        axios.get(this.baseURL)
+        .then(r => {
+          this.albumArray = r.data.response;
+          console.log(r.data);
+          this.isLoaded = true
+        })
+      }
+    }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
