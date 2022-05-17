@@ -7,8 +7,8 @@
         <div 
         v-for=" (album,index) in albumArray" 
         :key="`album-${index}`" 
-        class="col-6 col-md-4 col-lg-2"> <AlbumComponent :album="album" /> </div>
-      </div>
+        class="album_card"> <AlbumComponent :album="album" /> </div>
+      </div> 
 
     </div>
 
@@ -71,7 +71,42 @@ export default {
     padding-top: 70px;
     height: 100%;
     width: 100%;
+
+    .album_card{
+      width: calc(100%/2);
+    }
+
+      // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) { 
+      .album_card{
+          width: calc(100%/2);
+        }
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) { 
+      .album_card{
+          width: calc(100%/3);
+        }
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) { 
+      .album_card{
+          width: calc(100%/4);
+        }
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) { 
+      .album_card{
+          width: calc(100%/5);
+        }
+    }
   }
 }
+
+
+
 
 </style>
