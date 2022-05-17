@@ -35,6 +35,7 @@ export default {
 .title{
   padding: 25px;
   font-size: 50px;
+  text-align: center;
 }
 
 .loader {

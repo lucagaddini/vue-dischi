@@ -13,7 +13,7 @@
     </div>
 
     <div class="container" v-else>
-      <LoadingComponent loaderName="LOADING MUSIC"/>
+      <LoadingComponent loaderName="LOADING YOUR FAVORITE MUSIC ..."/>
     </div>
 
   </div>
@@ -46,7 +46,7 @@ export default {
         .then(r => {
           this.albumArray = r.data.response;
           console.log(r.data);
-          this.isLoaded = true
+          setTimeout(() => {this.isLoaded = true}, 3000);
         })
       }
     }
