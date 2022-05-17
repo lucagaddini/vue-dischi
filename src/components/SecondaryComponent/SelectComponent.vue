@@ -1,7 +1,9 @@
 <template>
   <div>
     
-    <select name="music-genre" id="genre">
+    <select 
+    @change="onChangeSelect"
+    name="music-genre" id="genre">
       <option value="all" selected>Seleziona un genere</option>
       <option value="Pop">Pop</option>
       <option value="Rock">Rock</option>
@@ -13,7 +15,13 @@
 
 <script>
 export default {
-  name:'SelectComponent'
+  name:'SelectComponent',
+  methods:{
+    onChangeSelect () {
+        this.$emit('selectedItem', event.target.value)
+        console.log("CHILDREN -----> CHANGED");
+    }
+  }
 }
 </script>
 

@@ -5,8 +5,8 @@
 
       <div class="row">
         <div 
-        v-for=" (album,index) in albumArray" 
-        :key="`album-${index}`" 
+        v-for="(album,index) in albumArray" 
+        :key="`album-${index}`"
         class="album_card"> <AlbumComponent :album="album" /> </div>
       </div> 
 
@@ -29,6 +29,9 @@ export default {
     name: "MainComponent",
 
     components: { AlbumComponent, LoadingComponent },
+    props:{
+      filterKey : String
+    },
 
     data(){
       return{
@@ -38,7 +41,8 @@ export default {
       }
     },
     mounted(){
-      this.getAPI()
+      this.getAPI();
+      // this.genreSelected = this.filterKey;
     },
     methods:{
       getAPI(){

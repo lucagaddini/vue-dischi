@@ -4,7 +4,7 @@
       <img src="../assets/img/logo.png" alt="Logo">
     </div>
     <div class="selector">
-      <SelectComponent />
+      <SelectComponent @selectedItem="onChangedChildren" />
     </div>
   </div>
 </template>
@@ -13,7 +13,19 @@
 import SelectComponent from "./SecondaryComponent/SelectComponent.vue";
 export default {
     name: "HeaderComponent",
-    components: { SelectComponent }
+    components: { SelectComponent },
+    data(){
+      return{
+        selectValue: "all"
+      }
+    },
+    methods: {
+    onChangedChildren (value) {
+      console.log(value)
+      this.selectValue = value; // someValue
+      this.$emit('filterItems', value)
+    }
+  }
 }
 </script>
 
