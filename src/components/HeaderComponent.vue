@@ -4,7 +4,9 @@
       <img src="../assets/img/logo.png" alt="Logo">
     </div>
     <div class="selector">
-      <SelectComponent @selectedItem="onChangedChildren" />
+      <SelectComponent 
+      @selectedItemArtist="onChangedArtist"
+      @selectedItemGenre="onChangedGenre" />
     </div>
   </div>
 </template>
@@ -16,15 +18,22 @@ export default {
     components: { SelectComponent },
     data(){
       return{
-        selectValue: "all"
+        selectGenreValue: "all",
+        selectArtistValue: "all"
       }
     },
     methods: {
-    onChangedChildren (value) {
-      console.log(value)
-      this.selectValue = value; // someValue
-      this.$emit('filterItems', value)
-    }
+      onChangedGenre(value) {
+        console.log('onChangedGenre',value)
+        this.selectGenreValue = value; // someValue
+        this.$emit('filterItemsGenre', this.selectGenreValue)
+      },
+      onChangedArtist(value) {
+        console.log('onChangedArtist',value)
+        this.selectArtistValue = value; // someValue
+        this.$emit('filterItemsArtist', this.selectArtistValue)
+      },
+
   }
 }
 </script>

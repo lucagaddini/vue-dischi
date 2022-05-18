@@ -1,7 +1,11 @@
 <template>
   <div>
-    <HeaderComponent @filterItems="filterAlbum"/>
-    <MainComponent :filterKey="filterValue"/>
+    <HeaderComponent 
+    @filterItemsGenre="filterAlbumGenre"
+    @filterItemsArtist="filterAlbumArtist"/>
+    <MainComponent 
+    :filterKeyGenre="filterForGenre"
+    :filterKeyArtist="filterForArtist"/>
   </div>
 </template>
 
@@ -16,13 +20,18 @@ export default {
   components: { HeaderComponent, MainComponent },
   data(){
     return{
-      filterValue: "all"
+      filterForGenre: "all",
+      filterForArtist: "all"
     }
   },
   methods:{
-    filterAlbum(value) {
-        this.filterValue = value;
-        console.log("VUE.APP -----> Select Value:", value);
+    filterAlbumGenre(value) {
+        this.filterForGenre = value;
+        console.log("VUE.APP -----> Select Genre Value:", value);
+    },
+    filterAlbumArtist(value) {
+        this.filterForArtist = value;
+        console.log("VUE.APP -----> Select Artist Value:", value);
     }
   }
 }

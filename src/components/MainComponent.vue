@@ -3,13 +3,11 @@
 
     <div v-if="isLoaded" class="album_container container">
 
-      <!-- <div class=""> -->
-        <div 
-        v-for="(album,index) in filteredAlbum" 
-        :key="`album-${index}`"
-        class="album_card"> <AlbumComponent :album="album" /> </div>
-      <!-- </div>  -->
-
+      <div 
+      v-for="(album,index) in filteredAlbum" 
+      :key="`album-${index}`"
+      class="album_card"> <AlbumComponent :album="album" /> </div>
+  
     </div>
 
     <div class="container" v-else>
@@ -30,7 +28,8 @@ export default {
 
     components: { AlbumComponent, LoadingComponent },
     props:{
-      filterKey : String
+      filterKeyGenre : String,
+      filterKeyArtist : String
     },
 
     data(){
@@ -42,7 +41,6 @@ export default {
     },
     mounted(){
       this.getAPI();
-      // this.genreSelected = this.filterKey;
     },
     methods:{
       getAPI(){
@@ -58,13 +56,26 @@ export default {
       filteredAlbum(){
 
         let arrayFiltered = [];
-        if (this.filterKey == "all"){
+        if (this.filterKeyGenre == "all" && this.filterKeyArtist == "all"){
           arrayFiltered = this.albumArray;
-        } else {
+
+        } else if (this.filterKeyGenre == "all" && this.filterKeyArtist != "all"){
           arrayFiltered = this.albumArray.filter( album => {
-            return album.genre.includes(this.filterKey);
+            return album.author.includes(this.filterKeyArtist);
+          })
+
+        } else if (this.filterKeyArtist == "all" && this.filterKeyGenre != "all"){
+          arrayFiltered = this.albumArray.filter( album => {
+            return album.genre.includes(this.filterKeyGenre);
+          })
+
+        } else if (this.filterKeyArtist != "all" && this.filterKeyGenre != "all"){
+          arrayFiltered = this.albumArray.filter( album => {
+            return (album.genre.includes(this.filterKeyGenre) && album.author.includes(this.filterKeyArtist));
           })
         }
+
+
         return arrayFiltered;
 
       }
@@ -93,36 +104,36 @@ export default {
 
     .album_card{
       @include flex-cnt();
-      width: calc(100%/2 - 10px);
+      width: calc(100%/2 - 30px);
       height: 500px;
-      margin: 0 5px;
+      margin: 0 15px;
     }
 
       // Small devices (landscape phones, 576px and up)
     @media (min-width: 576px) { 
       .album_card{
-          width: calc(100%/2 - 10px);
+          width: calc(100%/2 - 30px);
         }
     }
 
     // Medium devices (tablets, 768px and up)
     @media (min-width: 768px) { 
       .album_card{
-          width: calc(100%/3 - 10px);
+          width: calc(100%/3 - 30px);
         }
     }
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) { 
       .album_card{
-          width: calc(100%/4 - 10px);
+          width: calc(100%/4 - 30px);
         }
     }
 
     // X-Large devices (large desktops, 1200px and up)
     @media (min-width: 1200px) { 
       .album_card{
-          width: calc(100%/5 - 10px);
+          width: calc(100%/5 - 30px);
         }
     }
   }

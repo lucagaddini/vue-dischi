@@ -30,7 +30,6 @@ export default {
   background-color: $secondary-color;
   width: 100%;
   height: calc(100% - 30px);
-  
   padding-top: 10px;
   padding-bottom: 50px;
 
