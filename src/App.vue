@@ -1,8 +1,11 @@
 <template>
   <div>
+    <!-- Il componente genitore rimane in ascolto ad allo scaturirsi di uno dei due eventi chiama la relativa funzione -->
     <HeaderComponent 
     @filterItemsGenre="filterAlbumGenre"
     @filterItemsArtist="filterAlbumArtist"/>
+
+    <!-- Il componente genitore passa al componente figlio i valori delle props presenti in quest'ultimo -->
     <MainComponent 
     :filterKeyGenre="filterForGenre"
     :filterKeyArtist="filterForArtist"/>
@@ -25,10 +28,13 @@ export default {
     }
   },
   methods:{
+    // Funzione che salva il valore del parametro ricevuto dal componente figlio in una variabile del componente stesso
     filterAlbumGenre(value) {
         this.filterForGenre = value;
         console.log("VUE.APP -----> Select Genre Value:", value);
     },
+
+    // Funzione che salva il valore del parametro ricevuto dal componente figlio in una variabile del componente stesso
     filterAlbumArtist(value) {
         this.filterForArtist = value;
         console.log("VUE.APP -----> Select Artist Value:", value);

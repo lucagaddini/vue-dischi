@@ -4,6 +4,7 @@
       <img src="../assets/img/logo.png" alt="Logo">
     </div>
     <div class="selector">
+      <!-- Il componente genitore rimane in ascolto ad allo scaturirsi di uno dei due eventi chiama la relativa funzione -->
       <SelectComponent 
       @selectedItemArtist="onChangedArtist"
       @selectedItemGenre="onChangedGenre" />
@@ -23,11 +24,14 @@ export default {
       }
     },
     methods: {
+      // Funzione che al verificarsi dell'evento passa il valore della select al componente genitore
       onChangedGenre(value) {
         console.log('onChangedGenre',value)
         this.selectGenreValue = value; // someValue
         this.$emit('filterItemsGenre', this.selectGenreValue)
       },
+      
+      // Funzione che al verificarsi dell'evento passa il valore della select al componente genitore
       onChangedArtist(value) {
         console.log('onChangedArtist',value)
         this.selectArtistValue = value; // someValue

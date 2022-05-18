@@ -47,7 +47,7 @@ export default {
         axios.get(this.baseURL)
         .then(r => {
           this.albumArray = r.data.response;
-          console.log(r.data);
+          console.log('Risposta API MainComponent ---->',r.data);
           setTimeout(() => {this.isLoaded = true}, 3000);
         })
       }
