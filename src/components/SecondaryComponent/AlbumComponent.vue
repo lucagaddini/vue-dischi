@@ -32,7 +32,6 @@ export default {
   height: calc(100% - 30px);
   
   padding-top: 10px;
-  margin: 15px 0;
   padding-bottom: 50px;
 
   img{

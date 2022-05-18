@@ -3,12 +3,12 @@
 
     <div v-if="isLoaded" class="album_container container">
 
-      <div class="row">
+      <!-- <div class=""> -->
         <div 
         v-for="(album,index) in filteredAlbum" 
         :key="`album-${index}`"
         class="album_card"> <AlbumComponent :album="album" /> </div>
-      </div> 
+      <!-- </div>  -->
 
     </div>
 
@@ -92,34 +92,37 @@ export default {
     width: 100%;
 
     .album_card{
-      width: calc(100%/2);
+      @include flex-cnt();
+      width: calc(100%/2 - 10px);
+      height: 500px;
+      margin: 0 5px;
     }
 
       // Small devices (landscape phones, 576px and up)
     @media (min-width: 576px) { 
       .album_card{
-          width: calc(100%/2);
+          width: calc(100%/2 - 10px);
         }
     }
 
     // Medium devices (tablets, 768px and up)
     @media (min-width: 768px) { 
       .album_card{
-          width: calc(100%/3);
+          width: calc(100%/3 - 10px);
         }
     }
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) { 
       .album_card{
-          width: calc(100%/4);
+          width: calc(100%/4 - 10px);
         }
     }
 
     // X-Large devices (large desktops, 1200px and up)
     @media (min-width: 1200px) { 
       .album_card{
-          width: calc(100%/5);
+          width: calc(100%/5 - 10px);
         }
     }
   }
