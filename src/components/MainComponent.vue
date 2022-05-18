@@ -5,7 +5,7 @@
 
       <div class="row">
         <div 
-        v-for="(album,index) in albumArray" 
+        v-for="(album,index) in filteredAlbum" 
         :key="`album-${index}`"
         class="album_card"> <AlbumComponent :album="album" /> </div>
       </div> 
@@ -52,6 +52,21 @@ export default {
           console.log(r.data);
           setTimeout(() => {this.isLoaded = true}, 3000);
         })
+      }
+    },
+    computed:{
+      filteredAlbum(){
+
+        let arrayFiltered = [];
+        if (this.filterKey == "all"){
+          arrayFiltered = this.albumArray;
+        } else {
+          arrayFiltered = this.albumArray.filter( album => {
+            return album.genre.includes(this.filterKey);
+          })
+        }
+        return arrayFiltered;
+
       }
     }
 }
