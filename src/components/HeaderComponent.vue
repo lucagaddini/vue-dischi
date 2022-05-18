@@ -1,19 +1,29 @@
 <template>
-  <div class="header_container container-fluid">
-    <div class="logo">
+<nav class="navbar navbar-expand-lg navbar_personal">
+  <div class="container-fluid">
+    <a class="navbar-brand logo" href="#">
       <img src="../assets/img/logo.png" alt="Logo">
-    </div>
-    <div class="selector">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse navbar_select_container" id="navbarNav">
+      
       <!-- Il componente genitore rimane in ascolto ad allo scaturirsi di uno dei due eventi chiama la relativa funzione -->
       <SelectComponent 
       @selectedItemArtist="onChangedArtist"
       @selectedItemGenre="onChangedGenre" />
     </div>
   </div>
+</nav>
+  
 </template>
 
 <script>
 import SelectComponent from "./SecondaryComponent/SelectComponent.vue";
+
+
+
 export default {
     name: "HeaderComponent",
     components: { SelectComponent },
@@ -30,7 +40,7 @@ export default {
         this.selectGenreValue = value; // someValue
         this.$emit('filterItemsGenre', this.selectGenreValue)
       },
-      
+
       // Funzione che al verificarsi dell'evento passa il valore della select al componente genitore
       onChangedArtist(value) {
         console.log('onChangedArtist',value)
@@ -49,7 +59,8 @@ export default {
 @import '../assets/style/utils';
 @import '../assets/style/vars';
 
-.header_container{
+
+.navbar_personal{
   background-color: $secondary-color;
   padding: 20px;
 
@@ -58,6 +69,14 @@ export default {
     img{
       width: 45px;
     }
+  }
+
+  .navbar_select_container{
+    flex-grow: 0;
+  }
+
+  .fa-solid{
+    color: $logo-primary-color;
   }
 
 }

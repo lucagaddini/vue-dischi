@@ -105,7 +105,7 @@ export default {
     .album_card{
       @include flex-cnt();
       width: calc(100%/2 - 30px);
-      height: 500px;
+      height: 400px;
       margin: 0 15px;
     }
 
@@ -113,6 +113,7 @@ export default {
     @media (min-width: 576px) { 
       .album_card{
           width: calc(100%/2 - 30px);
+          height: 430px;
         }
     }
 

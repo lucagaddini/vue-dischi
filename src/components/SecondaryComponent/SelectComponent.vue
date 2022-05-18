@@ -106,7 +106,7 @@ export default {
 
 select{
   padding: 10px;
-  margin: 0 10px;
+  margin: 10px 10px;
   color: white;
   background-color: lighten($primary-color, 40%);
   border: 1px solid lighten($primary-color, 80%);

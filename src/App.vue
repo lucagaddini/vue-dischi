@@ -9,14 +9,13 @@
     <MainComponent 
     :filterKeyGenre="filterForGenre"
     :filterKeyArtist="filterForArtist"/>
+
   </div>
 </template>
 
 <script>
 import HeaderComponent from "./components/HeaderComponent.vue";
 import MainComponent from "./components/MainComponent.vue";
-
-import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 
 export default {
@@ -43,6 +42,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
+
 
 </style>
