@@ -11,8 +11,7 @@ library.add(faHatWizard)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-import '../node_modules/bootstrap/scss/bootstrap.scss';
-import '../node_modules/bootstrap/js/dist/collapse.js';
+import "bootstrap";
 
 Vue.config.productionTip = false
 

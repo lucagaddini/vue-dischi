@@ -75,7 +75,6 @@ export default {
           })
         }
 
-
         return arrayFiltered;
 
       }
@@ -105,7 +104,7 @@ export default {
     .album_card{
       @include flex-cnt();
       width: calc(100%/2 - 30px);
-      height: 400px;
+      height: 420px;
       margin: 0 15px;
     }
 
@@ -139,8 +138,5 @@ export default {
     }
   }
 }
-
-
-
 
 </style>
